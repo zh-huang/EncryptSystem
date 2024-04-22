@@ -1,0 +1,3 @@
+/home/hzh/Documents/EncryptSystem/build/CMakeFiles/FileEncryptor.dir
+/home/hzh/Documents/EncryptSystem/build/CMakeFiles/edit_cache.dir
+/home/hzh/Documents/EncryptSystem/build/CMakeFiles/rebuild_cache.dir
