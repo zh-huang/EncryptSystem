@@ -153,53 +153,29 @@ common.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/common.cpp.s
 .PHONY : common.cpp.s
 
-decrypt.o: decrypt.cpp.o
-.PHONY : decrypt.o
+crypt.o: crypt.cpp.o
+.PHONY : crypt.o
 
 # target to build an object file
-decrypt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/decrypt.cpp.o
-.PHONY : decrypt.cpp.o
+crypt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/crypt.cpp.o
+.PHONY : crypt.cpp.o
 
-decrypt.i: decrypt.cpp.i
-.PHONY : decrypt.i
-
-# target to preprocess a source file
-decrypt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/decrypt.cpp.i
-.PHONY : decrypt.cpp.i
-
-decrypt.s: decrypt.cpp.s
-.PHONY : decrypt.s
-
-# target to generate assembly for a file
-decrypt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/decrypt.cpp.s
-.PHONY : decrypt.cpp.s
-
-encrypt.o: encrypt.cpp.o
-.PHONY : encrypt.o
-
-# target to build an object file
-encrypt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/encrypt.cpp.o
-.PHONY : encrypt.cpp.o
-
-encrypt.i: encrypt.cpp.i
-.PHONY : encrypt.i
+crypt.i: crypt.cpp.i
+.PHONY : crypt.i
 
 # target to preprocess a source file
-encrypt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/encrypt.cpp.i
-.PHONY : encrypt.cpp.i
+crypt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/crypt.cpp.i
+.PHONY : crypt.cpp.i
 
-encrypt.s: encrypt.cpp.s
-.PHONY : encrypt.s
+crypt.s: crypt.cpp.s
+.PHONY : crypt.s
 
 # target to generate assembly for a file
-encrypt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/encrypt.cpp.s
-.PHONY : encrypt.cpp.s
+crypt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/crypt.cpp.s
+.PHONY : crypt.cpp.s
 
 keygen.o: keygen.cpp.o
 .PHONY : keygen.o
@@ -309,12 +285,9 @@ help:
 	@echo "... common.o"
 	@echo "... common.i"
 	@echo "... common.s"
-	@echo "... decrypt.o"
-	@echo "... decrypt.i"
-	@echo "... decrypt.s"
-	@echo "... encrypt.o"
-	@echo "... encrypt.i"
-	@echo "... encrypt.s"
+	@echo "... crypt.o"
+	@echo "... crypt.i"
+	@echo "... crypt.s"
 	@echo "... keygen.o"
 	@echo "... keygen.i"
 	@echo "... keygen.s"

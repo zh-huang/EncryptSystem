@@ -3,8 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "decrypt.h"
-#include "encrypt.h"
+#include "crypt.h"
 #include "keygen.h"
 #include "sign.h"
 #include "verify.h"
@@ -13,7 +12,7 @@ using namespace std;
 
 string pargs(int argv, char** argc, string name)
 {
-    for (int i = 0; i < argv; i++) {
+    for (int i = 1; i < argv - 1; i++) {
         if (string(argc[i]) == name) {
             return string(argc[i + 1]);
         }
@@ -72,7 +71,7 @@ int verify(int argv, char** argc)
     if (pargs(argv, argc, "-s") != "") sigfile = pargs(argv, argc, "-s");
     rsa = RSA(keyfile);
     string message;
-    ifstream i(infile);
+    ifstream i(infile, ios::binary);
     if (!i.is_open()) {
         cerr << "Cannot open file: " << infile << endl;
         return 1;
@@ -128,7 +127,11 @@ int encrypt(int argv, char** argc)
         cerr << "Cannot open file: " << infile << endl;
         return 1;
     }
-    i >> plaintext;
+    while (!i.eof()) {
+        char c;
+        i.read(&c, 1);
+        plaintext += c;
+    }
     i.close();
     ciphertext = aes.encryptString(plaintext, key);
     ofstream o(outfile, ios::binary);
@@ -136,8 +139,8 @@ int encrypt(int argv, char** argc)
         cerr << "Cannot open file: " << outfile << endl;
         return 1;
     }
-    o << encryptedkey;
-    o << ciphertext;
+    o.write(encryptedkey.c_str(), 16);
+    o.write(ciphertext.c_str(), ciphertext.size());
     o.close();
     return 0;
 }
@@ -183,7 +186,7 @@ int decrypt(int argv, char** argc)
         cerr << "Cannot open file: " << outfile << endl;
         return 1;
     }
-    o << plaintext;
+    o.write(plaintext.c_str(), plaintext.size());
     o.close();
     return 0;
 }

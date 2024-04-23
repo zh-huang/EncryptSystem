@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/FileEncryptor.dir/common.cpp.o"
   "CMakeFiles/FileEncryptor.dir/common.cpp.o.d"
-  "CMakeFiles/FileEncryptor.dir/decrypt.cpp.o"
-  "CMakeFiles/FileEncryptor.dir/decrypt.cpp.o.d"
-  "CMakeFiles/FileEncryptor.dir/encrypt.cpp.o"
-  "CMakeFiles/FileEncryptor.dir/encrypt.cpp.o.d"
+  "CMakeFiles/FileEncryptor.dir/crypt.cpp.o"
+  "CMakeFiles/FileEncryptor.dir/crypt.cpp.o.d"
   "CMakeFiles/FileEncryptor.dir/keygen.cpp.o"
   "CMakeFiles/FileEncryptor.dir/keygen.cpp.o.d"
   "CMakeFiles/FileEncryptor.dir/main.cpp.o"

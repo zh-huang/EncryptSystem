@@ -11,13 +11,8 @@
 },
 {
   "directory": "/home/hzh/Documents/EncryptSystem/build",
-  "command": "/usr/bin/g++    -pthread -march=native -g -std=gnu++14 -o CMakeFiles/FileEncryptor.dir/decrypt.cpp.o -c /home/hzh/Documents/EncryptSystem/decrypt.cpp",
-  "file": "/home/hzh/Documents/EncryptSystem/decrypt.cpp"
-},
-{
-  "directory": "/home/hzh/Documents/EncryptSystem/build",
-  "command": "/usr/bin/g++    -pthread -march=native -g -std=gnu++14 -o CMakeFiles/FileEncryptor.dir/encrypt.cpp.o -c /home/hzh/Documents/EncryptSystem/encrypt.cpp",
-  "file": "/home/hzh/Documents/EncryptSystem/encrypt.cpp"
+  "command": "/usr/bin/g++    -pthread -march=native -g -std=gnu++14 -o CMakeFiles/FileEncryptor.dir/crypt.cpp.o -c /home/hzh/Documents/EncryptSystem/crypt.cpp",
+  "file": "/home/hzh/Documents/EncryptSystem/crypt.cpp"
 },
 {
   "directory": "/home/hzh/Documents/EncryptSystem/build",

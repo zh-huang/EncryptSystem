@@ -97,38 +97,24 @@ CMakeFiles/FileEncryptor.dir/common.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FileEncryptor.dir/common.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzh/Documents/EncryptSystem/common.cpp -o CMakeFiles/FileEncryptor.dir/common.cpp.s
 
-CMakeFiles/FileEncryptor.dir/decrypt.cpp.o: CMakeFiles/FileEncryptor.dir/flags.make
-CMakeFiles/FileEncryptor.dir/decrypt.cpp.o: ../decrypt.cpp
-CMakeFiles/FileEncryptor.dir/decrypt.cpp.o: CMakeFiles/FileEncryptor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FileEncryptor.dir/decrypt.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FileEncryptor.dir/decrypt.cpp.o -MF CMakeFiles/FileEncryptor.dir/decrypt.cpp.o.d -o CMakeFiles/FileEncryptor.dir/decrypt.cpp.o -c /home/hzh/Documents/EncryptSystem/decrypt.cpp
+CMakeFiles/FileEncryptor.dir/crypt.cpp.o: CMakeFiles/FileEncryptor.dir/flags.make
+CMakeFiles/FileEncryptor.dir/crypt.cpp.o: ../crypt.cpp
+CMakeFiles/FileEncryptor.dir/crypt.cpp.o: CMakeFiles/FileEncryptor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FileEncryptor.dir/crypt.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FileEncryptor.dir/crypt.cpp.o -MF CMakeFiles/FileEncryptor.dir/crypt.cpp.o.d -o CMakeFiles/FileEncryptor.dir/crypt.cpp.o -c /home/hzh/Documents/EncryptSystem/crypt.cpp
 
-CMakeFiles/FileEncryptor.dir/decrypt.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FileEncryptor.dir/decrypt.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzh/Documents/EncryptSystem/decrypt.cpp > CMakeFiles/FileEncryptor.dir/decrypt.cpp.i
+CMakeFiles/FileEncryptor.dir/crypt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FileEncryptor.dir/crypt.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzh/Documents/EncryptSystem/crypt.cpp > CMakeFiles/FileEncryptor.dir/crypt.cpp.i
 
-CMakeFiles/FileEncryptor.dir/decrypt.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FileEncryptor.dir/decrypt.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzh/Documents/EncryptSystem/decrypt.cpp -o CMakeFiles/FileEncryptor.dir/decrypt.cpp.s
-
-CMakeFiles/FileEncryptor.dir/encrypt.cpp.o: CMakeFiles/FileEncryptor.dir/flags.make
-CMakeFiles/FileEncryptor.dir/encrypt.cpp.o: ../encrypt.cpp
-CMakeFiles/FileEncryptor.dir/encrypt.cpp.o: CMakeFiles/FileEncryptor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FileEncryptor.dir/encrypt.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FileEncryptor.dir/encrypt.cpp.o -MF CMakeFiles/FileEncryptor.dir/encrypt.cpp.o.d -o CMakeFiles/FileEncryptor.dir/encrypt.cpp.o -c /home/hzh/Documents/EncryptSystem/encrypt.cpp
-
-CMakeFiles/FileEncryptor.dir/encrypt.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FileEncryptor.dir/encrypt.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hzh/Documents/EncryptSystem/encrypt.cpp > CMakeFiles/FileEncryptor.dir/encrypt.cpp.i
-
-CMakeFiles/FileEncryptor.dir/encrypt.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FileEncryptor.dir/encrypt.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzh/Documents/EncryptSystem/encrypt.cpp -o CMakeFiles/FileEncryptor.dir/encrypt.cpp.s
+CMakeFiles/FileEncryptor.dir/crypt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FileEncryptor.dir/crypt.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hzh/Documents/EncryptSystem/crypt.cpp -o CMakeFiles/FileEncryptor.dir/crypt.cpp.s
 
 CMakeFiles/FileEncryptor.dir/keygen.cpp.o: CMakeFiles/FileEncryptor.dir/flags.make
 CMakeFiles/FileEncryptor.dir/keygen.cpp.o: ../keygen.cpp
 CMakeFiles/FileEncryptor.dir/keygen.cpp.o: CMakeFiles/FileEncryptor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FileEncryptor.dir/keygen.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FileEncryptor.dir/keygen.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FileEncryptor.dir/keygen.cpp.o -MF CMakeFiles/FileEncryptor.dir/keygen.cpp.o.d -o CMakeFiles/FileEncryptor.dir/keygen.cpp.o -c /home/hzh/Documents/EncryptSystem/keygen.cpp
 
 CMakeFiles/FileEncryptor.dir/keygen.cpp.i: cmake_force
@@ -142,7 +128,7 @@ CMakeFiles/FileEncryptor.dir/keygen.cpp.s: cmake_force
 CMakeFiles/FileEncryptor.dir/sign.cpp.o: CMakeFiles/FileEncryptor.dir/flags.make
 CMakeFiles/FileEncryptor.dir/sign.cpp.o: ../sign.cpp
 CMakeFiles/FileEncryptor.dir/sign.cpp.o: CMakeFiles/FileEncryptor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FileEncryptor.dir/sign.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FileEncryptor.dir/sign.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FileEncryptor.dir/sign.cpp.o -MF CMakeFiles/FileEncryptor.dir/sign.cpp.o.d -o CMakeFiles/FileEncryptor.dir/sign.cpp.o -c /home/hzh/Documents/EncryptSystem/sign.cpp
 
 CMakeFiles/FileEncryptor.dir/sign.cpp.i: cmake_force
@@ -156,7 +142,7 @@ CMakeFiles/FileEncryptor.dir/sign.cpp.s: cmake_force
 CMakeFiles/FileEncryptor.dir/verify.cpp.o: CMakeFiles/FileEncryptor.dir/flags.make
 CMakeFiles/FileEncryptor.dir/verify.cpp.o: ../verify.cpp
 CMakeFiles/FileEncryptor.dir/verify.cpp.o: CMakeFiles/FileEncryptor.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/FileEncryptor.dir/verify.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/FileEncryptor.dir/verify.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FileEncryptor.dir/verify.cpp.o -MF CMakeFiles/FileEncryptor.dir/verify.cpp.o.d -o CMakeFiles/FileEncryptor.dir/verify.cpp.o -c /home/hzh/Documents/EncryptSystem/verify.cpp
 
 CMakeFiles/FileEncryptor.dir/verify.cpp.i: cmake_force
@@ -171,8 +157,7 @@ CMakeFiles/FileEncryptor.dir/verify.cpp.s: cmake_force
 FileEncryptor_OBJECTS = \
 "CMakeFiles/FileEncryptor.dir/main.cpp.o" \
 "CMakeFiles/FileEncryptor.dir/common.cpp.o" \
-"CMakeFiles/FileEncryptor.dir/decrypt.cpp.o" \
-"CMakeFiles/FileEncryptor.dir/encrypt.cpp.o" \
+"CMakeFiles/FileEncryptor.dir/crypt.cpp.o" \
 "CMakeFiles/FileEncryptor.dir/keygen.cpp.o" \
 "CMakeFiles/FileEncryptor.dir/sign.cpp.o" \
 "CMakeFiles/FileEncryptor.dir/verify.cpp.o"
@@ -182,14 +167,13 @@ FileEncryptor_EXTERNAL_OBJECTS =
 
 FileEncryptor: CMakeFiles/FileEncryptor.dir/main.cpp.o
 FileEncryptor: CMakeFiles/FileEncryptor.dir/common.cpp.o
-FileEncryptor: CMakeFiles/FileEncryptor.dir/decrypt.cpp.o
-FileEncryptor: CMakeFiles/FileEncryptor.dir/encrypt.cpp.o
+FileEncryptor: CMakeFiles/FileEncryptor.dir/crypt.cpp.o
 FileEncryptor: CMakeFiles/FileEncryptor.dir/keygen.cpp.o
 FileEncryptor: CMakeFiles/FileEncryptor.dir/sign.cpp.o
 FileEncryptor: CMakeFiles/FileEncryptor.dir/verify.cpp.o
 FileEncryptor: CMakeFiles/FileEncryptor.dir/build.make
 FileEncryptor: CMakeFiles/FileEncryptor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable FileEncryptor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable FileEncryptor"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FileEncryptor.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

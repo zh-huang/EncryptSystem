@@ -81,12 +81,12 @@ clean: CMakeFiles/FileEncryptor.dir/clean
 CMakeFiles/FileEncryptor.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target FileEncryptor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target FileEncryptor"
 .PHONY : CMakeFiles/FileEncryptor.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/FileEncryptor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hzh/Documents/EncryptSystem/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hzh/Documents/EncryptSystem/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/FileEncryptor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hzh/Documents/EncryptSystem/build/CMakeFiles 0
 .PHONY : CMakeFiles/FileEncryptor.dir/rule
