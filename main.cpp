@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -10,166 +11,204 @@
 
 using namespace std;
 
-int keygen()
+string pargs(int argv, char** argc, string name)
 {
+    for (int i = 0; i < argv; i++) {
+        if (string(argc[i]) == name) {
+            return string(argc[i + 1]);
+        }
+    }
+    return string("");
+}
+
+int keygen(int argv, char** argc)
+{
+    string filename = ".\\test\\key.txt";
+    int keysize = 512;
+    RSA rsa;
+    if (pargs(argv, argc, "-o") != "") filename = pargs(argv, argc, "-o");
+    if (pargs(argv, argc, "-s") != "") keysize = stoi(pargs(argv, argc, "-s"));
+    rsa.keyGenreate(keysize);
+    rsa.store(filename);
     return 0;
 }
 
-int sign()
+int sign(int argv, char** argc)
 {
+    string keyfile = ".\\test\\key.txt";
+    string infile = ".\\test\\message.txt";
+    string outfile = ".\\test\\signature.txt";
+    RSA rsa;
+    if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
+    if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
+    if (pargs(argv, argc, "-o") != "") outfile = pargs(argv, argc, "-o");
+    rsa = RSA(keyfile);
+    string message;
+    ifstream i(infile);
+    if (!i.is_open()) {
+        cerr << "Cannot open file: " << infile << endl;
+        return 1;
+    }
+    i >> message;
+    i.close();
+    ofstream o(outfile);
+    if (!o.is_open()) {
+        cerr << "Cannot open file: " << outfile << endl;
+        return 1;
+    }
+    o << rsa.sign(message);
+    o.close();
     return 0;
 }
 
-int verify()
+int verify(int argv, char** argc)
 {
+    string keyfile = ".\\test\\key.txt";
+    string infile = ".\\test\\message.txt";
+    string sigfile = ".\\test\\signature.txt";
+    RSA rsa;
+    if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
+    if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
+    if (pargs(argv, argc, "-s") != "") sigfile = pargs(argv, argc, "-s");
+    rsa = RSA(keyfile);
+    string message;
+    ifstream i(infile);
+    if (!i.is_open()) {
+        cerr << "Cannot open file: " << infile << endl;
+        return 1;
+    }
+    i >> message;
+    i.close();
+    string signature;
+    ifstream s(sigfile);
+    if (!s.is_open()) {
+        cerr << "Cannot open file: " << sigfile << endl;
+        return 1;
+    }
+    s >> signature;
+    s.close();
+    string B, N;
+    rsa.getKey(B, N);
+    if (rsa.verify(message, signature, B, N)) {
+        cout << "Signature is valid" << endl;
+    } else {
+        cout << "Signature is invalid" << endl;
+    }
     return 0;
 }
 
-int encrypt()
+int encrypt(int argv, char** argc)
 {
+    // Generate random key
+    vector<unsigned char> key(16);
+    for (auto& i : key) i = rand() % 256;
+
+    // Parse arguments
+    string keyfile = ".\\test\\key.txt";
+    string infile = ".\\test\\message.txt";
+    string outfile = ".\\test\\cipher.txt";
+    if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
+    if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
+    if (pargs(argv, argc, "-o") != "") outfile = pargs(argv, argc, "-o");
+
+    // Convert key to string
+    string keystr, encryptedkey;
+    for (auto i : key) keystr += i;
+    // Encrypt key
+    RSA rsa(keyfile);
+    string B, N;
+    rsa.getKey(B, N);
+    encryptedkey = rsa.encrypt(keystr, B, N);
+
+    // Encrypt file using key with AES
+    AES_CBC aes;
+    string plaintext, ciphertext;
+    ifstream i(infile, ios::binary);
+    if (!i.is_open()) {
+        cerr << "Cannot open file: " << infile << endl;
+        return 1;
+    }
+    i >> plaintext;
+    i.close();
+    ciphertext = aes.encryptString(plaintext, key);
+    ofstream o(outfile, ios::binary);
+    if (!o.is_open()) {
+        cerr << "Cannot open file: " << outfile << endl;
+        return 1;
+    }
+    o << encryptedkey;
+    o << ciphertext;
+    o.close();
     return 0;
 }
 
-int decrypt()
+int decrypt(int argv, char** argc)
 {
+    string encryptedkey = "1234567890123456", ciphertext;
+    vector<unsigned char> key(16);
+
+    // Parse arguments
+    string keyfile = ".\\test\\key.txt";
+    string infile = ".\\test\\cipher.txt";
+    string outfile = ".\\test\\message.txt";
+    if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
+    if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
+    if (pargs(argv, argc, "-o") != "") outfile = pargs(argv, argc, "-o");
+
+    // Decrypt key
+    ifstream i(infile, ios::binary);
+    if (!i.is_open()) {
+        cerr << "Cannot open file: " << infile << endl;
+        return 1;
+    }
+    i.read(&encryptedkey[0], 16);
+    while (!i.eof()) {
+        char c;
+        i.read(&c, 1);
+        ciphertext += c;
+    }
+    i.close();
+    RSA rsa(keyfile);
+    string keystr, B, N;
+    rsa.getKey(B, N);
+    keystr = rsa.decrypt(encryptedkey);
+    for (int i = 0; i < 16; i++) key[i] = keystr[i];
+
+    // Decrypt file using key with AES
+    AES_CBC aes;
+    string plaintext;
+    plaintext = aes.decryptString(ciphertext, key);
+    ofstream o(outfile);
+    if (!o.is_open()) {
+        cerr << "Cannot open file: " << outfile << endl;
+        return 1;
+    }
+    o << plaintext;
+    o.close();
     return 0;
 }
 
-int procagrs(int argv, char ** argc)
+int main(int argv, char** argc)
 {
-    return 0;
-}
-
-int main(int argv, char ** argc)
-{
-    switch(procagrs(argv, argc))
-    {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        case 6:
-            break;
-        case 7:
-            break;
-        case 8:
-            break;
-        case 9:
-            break;
-        case 10:
-            break;
-        case 11:
-            break;
-        case 12:
-            break;
-        case 13:
-            break;
-        case 14:
-            break;
-        case 15:
-            break;
-        case 16:
-            break;
-        case 17:
-            break;
-        case 18:
-            break;
-        case 19:
-            break;
-        case 20:
-            break;
-        case 21:
-            break;
-        case 22:
-            break;
-        case 23:
-            break;
-        case 24:
-            break;
-        case 25:
-            break;
-        case 26:
-            break;
-        case 27:
-            break;
-        case 28:
-            break;
-        case 29:
-            break;
-        case 30:
-            break;
-        case 31:
-            break;
-        case 32:
-            break;
-        case 33:
-            break;
-        case 34:
-            break;
-        case 35:
-            break;
-        case 36:
-            break;
-        case 37:
-            break;
-        case 38:
-            break;
-        case 39:
-            break;
-        case 40:
-            break;
-        case 41:
-            break;
-        case 42:
-            break;
-        case 43:
-            break;
-        case 44:
-            break;
-        case 45:
-            break;
-        case 46:
-            break;
-        case 47:
-            break;
-        case 48:
-            break;
-        case 49:
-            break;
-        case 50:
-            break;
-        case 51:
-            break;
-        case 52:
-            break;
-        case 53:
-            break;
-        case 54:
-            break;
-        case 55:
-            break;
-        case 56:
-            break;
-        case 57:
-            break;
-        case 58:
-            break;
-        case 59:
-            break;
-        case 60:
-            break;
-        case 61:
-            break;
-        case 62:
-            break;
-        default:
-            break;
+    if (argv < 2) {
+        cout << "Usage: " << argc[0] << " [keygen|sign|verify|encrypt|decrypt]"
+             << endl;
+        return 1;
+    }
+    if (string(argc[1]) == "keygen") {
+        return keygen(argv, argc);
+    } else if (string(argc[1]) == "sign") {
+        return sign(argv, argc);
+    } else if (string(argc[1]) == "verify") {
+        return verify(argv, argc);
+    } else if (string(argc[1]) == "encrypt") {
+        return encrypt(argv, argc);
+    } else if (string(argc[1]) == "decrypt") {
+        return decrypt(argv, argc);
+    } else {
+        cout << "Usage: " << argc[0] << " [keygen|sign|verify|encrypt|decrypt]"
+             << endl;
+        return 1;
     }
     return 0;
 }
