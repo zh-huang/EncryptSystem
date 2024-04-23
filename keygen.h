@@ -11,6 +11,8 @@
 #include <NTL/ZZ_p.h>
 #include <NTL/ZZ_pXFactoring.h>
 
+#include "sign.h"
+
 using namespace std;
 
 NTL_CLIENT

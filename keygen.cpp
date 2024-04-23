@@ -18,8 +18,7 @@ NTL::ZZ ZZFromStr(const std::string &str)
 RSA::RSA(string name)
 {
     ifstream i = ifstream(name.c_str(), ios::in);
-    if (!i.is_open())
-    {
+    if (!i.is_open()) {
         cerr << "RSA.cpp RSA::RSA(): input error" << endl;
         return;
     }
@@ -29,21 +28,19 @@ RSA::RSA(string name)
 
 void RSA::keyGenreate(int key_size)
 {
-    if (key_size != 512 && key_size != 1024)
-    {
-        cerr << "RSA.cpp RSA::keyGenerate: key_size should be 512 or 1024" << endl;
+    if (key_size != 512 && key_size != 1024) {
+        cerr << "RSA.cpp RSA::keyGenerate: key_size should be 512 or 1024"
+             << endl;
         return;
     }
     ZZ p, q, phi;
     size = key_size;
     GenGermainPrime(p, size);
     GenGermainPrime(q, size);
-    while (p == q)
-        GenGermainPrime(q, size);
+    while (p == q) GenGermainPrime(q, size);
     n = p * q;
     phi = (p - 1) * (q - 1);
-    do
-    {
+    do {
         RandomBnd(b, phi);
     } while (GCD(b, phi) != 1);
     InvMod(a, b, phi);
@@ -75,10 +72,13 @@ string RSA::decrypt(string ciphertext)
 
 string RSA::sign(string message)
 {
-    ZZ m, s, mm;
-    m = ZZFromStr(message);
-    rem(mm, m, n);
-    s = PowerMod(m, a, n);
+    ZZ s, hash;
+    SHA_1 sha;
+    hash = sha.sha1zz(message);
+    cout << "n: " << n << endl;
+    cout << "a: " << a << endl;
+    s = PowerMod(hash, a, n);
+    cout << "s: " << s << endl;
     string signature = toString(s);
     return signature;
 }

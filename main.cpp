@@ -22,7 +22,7 @@ string pargs(int argv, char** argc, string name)
 
 int keygen(int argv, char** argc)
 {
-    string filename = ".\\test\\key.txt";
+    string filename = "test/key.txt";
     int keysize = 512;
     RSA rsa;
     if (pargs(argv, argc, "-o") != "") filename = pargs(argv, argc, "-o");
@@ -34,13 +34,16 @@ int keygen(int argv, char** argc)
 
 int sign(int argv, char** argc)
 {
-    string keyfile = ".\\test\\key.txt";
-    string infile = ".\\test\\message.txt";
-    string outfile = ".\\test\\signature.txt";
-    RSA rsa;
+    // Parse arguments
+    string keyfile = "test/key.txt";
+    string infile = "test/message.txt";
+    string outfile = "test/signature.txt";
     if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
     if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
     if (pargs(argv, argc, "-o") != "") outfile = pargs(argv, argc, "-o");
+
+    // Read message
+    RSA rsa;
     rsa = RSA(keyfile);
     string message;
     ifstream i(infile);
@@ -48,23 +51,30 @@ int sign(int argv, char** argc)
         cerr << "Cannot open file: " << infile << endl;
         return 1;
     }
-    i >> message;
+    while (!i.eof()) {
+        char c;
+        i.read(&c, 1);
+        message += c;
+    }
     i.close();
+
+    // Hash and sign message
     ofstream o(outfile);
     if (!o.is_open()) {
         cerr << "Cannot open file: " << outfile << endl;
         return 1;
     }
-    o << rsa.sign(message);
+    string signature = rsa.sign(message);
+    o.write(signature.c_str(), signature.size());
     o.close();
     return 0;
 }
 
 int verify(int argv, char** argc)
 {
-    string keyfile = ".\\test\\key.txt";
-    string infile = ".\\test\\message.txt";
-    string sigfile = ".\\test\\signature.txt";
+    string keyfile = "test/key.txt";
+    string infile = "test/message.txt";
+    string sigfile = "test/signature.txt";
     RSA rsa;
     if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
     if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
@@ -103,9 +113,9 @@ int encrypt(int argv, char** argc)
     for (auto& i : key) i = rand() % 256;
 
     // Parse arguments
-    string keyfile = ".\\test\\key.txt";
-    string infile = ".\\test\\message.txt";
-    string outfile = ".\\test\\cipher.txt";
+    string keyfile = "test/key.txt";
+    string infile = "test/message.txt";
+    string outfile = "test/cipher.txt";
     if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
     if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
     if (pargs(argv, argc, "-o") != "") outfile = pargs(argv, argc, "-o");
@@ -151,9 +161,9 @@ int decrypt(int argv, char** argc)
     vector<unsigned char> key(16);
 
     // Parse arguments
-    string keyfile = ".\\test\\key.txt";
-    string infile = ".\\test\\cipher.txt";
-    string outfile = ".\\test\\message.txt";
+    string keyfile = "test/key.txt";
+    string infile = "test/cipher.txt";
+    string outfile = "test/message.txt";
     if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
     if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
     if (pargs(argv, argc, "-o") != "") outfile = pargs(argv, argc, "-o");
