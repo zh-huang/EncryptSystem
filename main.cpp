@@ -86,7 +86,11 @@ int verify(int argv, char** argc)
         cerr << "Cannot open file: " << infile << endl;
         return 1;
     }
-    i >> message;
+    while (!i.eof()) {
+        char c;
+        i.read(&c, 1);
+        message += c;
+    }
     i.close();
     string signature;
     ifstream s(sigfile);
@@ -94,7 +98,11 @@ int verify(int argv, char** argc)
         cerr << "Cannot open file: " << sigfile << endl;
         return 1;
     }
-    s >> signature;
+    while (!s.eof()) {
+        char c;
+        s.read(&c, 1);
+        signature += c;
+    }
     s.close();
     string B, N;
     rsa.getKey(B, N);

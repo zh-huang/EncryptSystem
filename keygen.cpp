@@ -75,23 +75,22 @@ string RSA::sign(string message)
     ZZ s, hash;
     SHA_1 sha;
     hash = sha.sha1zz(message);
-    cout << "n: " << n << endl;
-    cout << "a: " << a << endl;
     s = PowerMod(hash, a, n);
-    cout << "s: " << s << endl;
     string signature = toString(s);
     return signature;
 }
 
 bool RSA::verify(string message, string signature, string B, string N)
 {
-    ZZ m, s;
+    ZZ m, s, hash;
     m = ZZFromStr(message);
     s = ZZFromStr(signature);
-    ZZ e = ZZFromStr(B);
-    ZZ mod = ZZFromStr(N);
-    ZZ computedSignature = PowerMod(s, e, mod);
-    return m == computedSignature;
+    hash = SHA_1().sha1zz(message);
+    ZZ b = ZZFromStr(B);
+    ZZ n = ZZFromStr(N);
+    ZZ computedSignature = PowerMod(s, b, n);
+    cout << hash << endl << computedSignature << endl;
+    return hash == computedSignature;
 }
 
 void RSA::store(string filename)
@@ -103,6 +102,7 @@ void RSA::store(string filename)
     o << n << endl;
     o << size << endl;
     o.close();
+
     // store public key
     ofstream p(filename + ".pub", ios::out | ios::binary);
     p << b << endl;

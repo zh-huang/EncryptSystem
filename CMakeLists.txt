@@ -13,6 +13,6 @@ install(TARGETS EncryptSystem DESTINATION /usr/local/bin)
 
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_NAME "EncryptSystem.deb")
-set(CPACK_PACKAGE_VERSION "0.1.0")
+set(CPACK_PACKAGE_VERSION "0.1.2")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Zehua Huang <huangzh84@outlook.com>")
 include(CPack)

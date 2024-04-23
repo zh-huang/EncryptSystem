@@ -4,6 +4,6 @@ Maintainer: Zehua Huang <huangzh84@outlook.com>
 Package: encryptsystem.deb
 Priority: optional
 Section: devel
-Version: 0.1.0
+Version: 0.1.2
 Installed-Size: 2373
 
