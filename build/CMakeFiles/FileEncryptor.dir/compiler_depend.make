@@ -748,7 +748,9 @@ CMakeFiles/FileEncryptor.dir/keygen.cpp.o: ../keygen.cpp \
   /usr/local/include/NTL/matrix.h \
   /usr/local/include/NTL/vec_vec_ZZ_p.h \
   /usr/local/include/NTL/pair_ZZ_pX_long.h \
-  /usr/local/include/NTL/pair.h
+  /usr/local/include/NTL/pair.h \
+  ../sign.h \
+  ../common.h
 
 CMakeFiles/FileEncryptor.dir/main.cpp.o: ../main.cpp \
   /usr/include/stdc-predef.h \
@@ -1593,9 +1595,9 @@ CMakeFiles/FileEncryptor.dir/verify.cpp.o: ../verify.cpp \
 
 /usr/include/c++/11/algorithm:
 
-../sign.h:
-
 ../main.cpp:
+
+../sign.h:
 
 ../keygen.cpp:
 

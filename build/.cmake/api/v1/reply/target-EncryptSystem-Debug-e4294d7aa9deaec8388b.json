@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "FileEncryptor"
+			"path" : "EncryptSystem"
 		}
 	],
 	"backtrace" : 1,
@@ -11,6 +11,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"install",
 			"target_link_libraries"
 		],
 		"files" : 
@@ -30,6 +31,12 @@
 			},
 			{
 				"command" : 1,
+				"file" : 0,
+				"line" : 12,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
 				"file" : 0,
 				"line" : 10,
 				"parent" : 0
@@ -68,7 +75,21 @@
 			]
 		}
 	],
-	"id" : "FileEncryptor::@6890427a1f51a3e7e1df",
+	"id" : "EncryptSystem::@6890427a1f51a3e7e1df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "/usr/local/bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/usr/local"
+		}
+	},
 	"link" : 
 	{
 		"commandFragments" : 
@@ -82,25 +103,25 @@
 				"role" : "flags"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 3,
 				"fragment" : "-lntl",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 3,
 				"fragment" : "-lgmp",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 3,
 				"fragment" : "-lm",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "FileEncryptor",
-	"nameOnDisk" : "FileEncryptor",
+	"name" : "EncryptSystem",
+	"nameOnDisk" : "EncryptSystem",
 	"paths" : 
 	{
 		"build" : ".",

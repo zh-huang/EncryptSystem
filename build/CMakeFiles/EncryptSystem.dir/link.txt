@@ -1,0 +1,1 @@
+/usr/bin/g++  -pthread -march=native -g CMakeFiles/EncryptSystem.dir/main.cpp.o CMakeFiles/EncryptSystem.dir/common.cpp.o CMakeFiles/EncryptSystem.dir/crypt.cpp.o CMakeFiles/EncryptSystem.dir/keygen.cpp.o CMakeFiles/EncryptSystem.dir/sign.cpp.o CMakeFiles/EncryptSystem.dir/verify.cpp.o -o EncryptSystem  -lntl -lgmp -lm 

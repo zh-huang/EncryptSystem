@@ -65,6 +65,26 @@ CMAKE_BINARY_DIR = /home/hzh/Documents/EncryptSystem/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
+	/usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/hzh/Documents/EncryptSystem/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -84,6 +104,51 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -117,24 +182,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FileEncryptor
+# Target rules for targets named EncryptSystem
 
 # Build rule for target.
-FileEncryptor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 FileEncryptor
-.PHONY : FileEncryptor
+EncryptSystem: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 EncryptSystem
+.PHONY : EncryptSystem
 
 # fast build rule for target.
-FileEncryptor/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/build
-.PHONY : FileEncryptor/fast
+EncryptSystem/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/build
+.PHONY : EncryptSystem/fast
 
 common.o: common.cpp.o
 .PHONY : common.o
 
 # target to build an object file
 common.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/common.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/common.cpp.o
 .PHONY : common.cpp.o
 
 common.i: common.cpp.i
@@ -142,7 +207,7 @@ common.i: common.cpp.i
 
 # target to preprocess a source file
 common.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/common.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/common.cpp.i
 .PHONY : common.cpp.i
 
 common.s: common.cpp.s
@@ -150,7 +215,7 @@ common.s: common.cpp.s
 
 # target to generate assembly for a file
 common.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/common.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/common.cpp.s
 .PHONY : common.cpp.s
 
 crypt.o: crypt.cpp.o
@@ -158,7 +223,7 @@ crypt.o: crypt.cpp.o
 
 # target to build an object file
 crypt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/crypt.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/crypt.cpp.o
 .PHONY : crypt.cpp.o
 
 crypt.i: crypt.cpp.i
@@ -166,7 +231,7 @@ crypt.i: crypt.cpp.i
 
 # target to preprocess a source file
 crypt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/crypt.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/crypt.cpp.i
 .PHONY : crypt.cpp.i
 
 crypt.s: crypt.cpp.s
@@ -174,7 +239,7 @@ crypt.s: crypt.cpp.s
 
 # target to generate assembly for a file
 crypt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/crypt.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/crypt.cpp.s
 .PHONY : crypt.cpp.s
 
 keygen.o: keygen.cpp.o
@@ -182,7 +247,7 @@ keygen.o: keygen.cpp.o
 
 # target to build an object file
 keygen.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/keygen.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/keygen.cpp.o
 .PHONY : keygen.cpp.o
 
 keygen.i: keygen.cpp.i
@@ -190,7 +255,7 @@ keygen.i: keygen.cpp.i
 
 # target to preprocess a source file
 keygen.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/keygen.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/keygen.cpp.i
 .PHONY : keygen.cpp.i
 
 keygen.s: keygen.cpp.s
@@ -198,7 +263,7 @@ keygen.s: keygen.cpp.s
 
 # target to generate assembly for a file
 keygen.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/keygen.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/keygen.cpp.s
 .PHONY : keygen.cpp.s
 
 main.o: main.cpp.o
@@ -206,7 +271,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -214,7 +279,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -222,7 +287,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 sign.o: sign.cpp.o
@@ -230,7 +295,7 @@ sign.o: sign.cpp.o
 
 # target to build an object file
 sign.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/sign.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/sign.cpp.o
 .PHONY : sign.cpp.o
 
 sign.i: sign.cpp.i
@@ -238,7 +303,7 @@ sign.i: sign.cpp.i
 
 # target to preprocess a source file
 sign.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/sign.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/sign.cpp.i
 .PHONY : sign.cpp.i
 
 sign.s: sign.cpp.s
@@ -246,7 +311,7 @@ sign.s: sign.cpp.s
 
 # target to generate assembly for a file
 sign.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/sign.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/sign.cpp.s
 .PHONY : sign.cpp.s
 
 verify.o: verify.cpp.o
@@ -254,7 +319,7 @@ verify.o: verify.cpp.o
 
 # target to build an object file
 verify.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/verify.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/verify.cpp.o
 .PHONY : verify.cpp.o
 
 verify.i: verify.cpp.i
@@ -262,7 +327,7 @@ verify.i: verify.cpp.i
 
 # target to preprocess a source file
 verify.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/verify.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/verify.cpp.i
 .PHONY : verify.cpp.i
 
 verify.s: verify.cpp.s
@@ -270,7 +335,7 @@ verify.s: verify.cpp.s
 
 # target to generate assembly for a file
 verify.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FileEncryptor.dir/build.make CMakeFiles/FileEncryptor.dir/verify.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/verify.cpp.s
 .PHONY : verify.cpp.s
 
 # Help Target
@@ -280,8 +345,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
-	@echo "... FileEncryptor"
+	@echo "... EncryptSystem"
 	@echo "... common.o"
 	@echo "... common.i"
 	@echo "... common.s"

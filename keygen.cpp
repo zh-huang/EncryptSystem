@@ -28,9 +28,9 @@ RSA::RSA(string name)
 
 void RSA::keyGenreate(int key_size)
 {
-    if (key_size != 512 && key_size != 1024) {
-        cerr << "RSA.cpp RSA::keyGenerate: key_size should be 512 or 1024"
-             << endl;
+    if (key_size != 512 && key_size != 1024 && key_size != 2048 &&
+        key_size != 4096) {
+        cerr << "key_size should be 512/1024/2048/4096, default=512" << endl;
         return;
     }
     ZZ p, q, phi;
@@ -96,10 +96,16 @@ bool RSA::verify(string message, string signature, string B, string N)
 
 void RSA::store(string filename)
 {
+    // store private key
     ofstream o(filename, ios::out | ios::binary);
     o << a << endl;
     o << b << endl;
     o << n << endl;
     o << size << endl;
     o.close();
+    // store public key
+    ofstream p(filename + ".pub", ios::out | ios::binary);
+    p << b << endl;
+    p << n << endl;
+    p.close();
 }

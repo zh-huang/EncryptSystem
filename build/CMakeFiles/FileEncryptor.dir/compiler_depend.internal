@@ -752,6 +752,8 @@ CMakeFiles/FileEncryptor.dir/keygen.cpp.o
  /usr/local/include/NTL/vec_vec_ZZ_p.h
  /usr/local/include/NTL/pair_ZZ_pX_long.h
  /usr/local/include/NTL/pair.h
+ /home/hzh/Documents/EncryptSystem/sign.h
+ /home/hzh/Documents/EncryptSystem/common.h
 
 CMakeFiles/FileEncryptor.dir/main.cpp.o
  /home/hzh/Documents/EncryptSystem/main.cpp
