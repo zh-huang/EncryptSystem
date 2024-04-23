@@ -1,7 +1,7 @@
 Architecture: amd64
-Description: FileEncryptor built using CMake
+Description: EncryptSystem built using CMake
 Maintainer: Zehua Huang <huangzh84@outlook.com>
-Package: fileencryptor.deb
+Package: encryptsystem.deb
 Priority: optional
 Section: devel
 Version: 0.1.0

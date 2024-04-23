@@ -1,1 +1,1 @@
-/usr/local/bin/FileEncryptor
+/usr/local/bin/EncryptSystem
