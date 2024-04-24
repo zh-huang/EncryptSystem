@@ -1,15 +1,14 @@
 #pragma once
 
-#include <fstream>
-#include <iostream>
-#include <random>
-#include <string>
-#include <vector>
-#include <sstream>
-
 #include <NTL/ZZ.h>
 #include <NTL/ZZ_p.h>
 #include <NTL/ZZ_pXFactoring.h>
+
+#include <fstream>
+#include <random>
+#include <sstream>
+#include <string>
+#include <vector>
 
 #include "sign.h"
 
@@ -19,23 +18,21 @@ NTL_CLIENT
 
 string toString(ZZ z);
 
-class RSA
-{
-private:
+class RSA {
+   private:
     /* stores private and public key */
     ZZ a, b, n;
     /* default = 512 bit */
     int size;
 
-public:
+   public:
     RSA(){};
-    RSA(string name);
+    RSA(string name, const bool privatekey = true);
     void keyGenreate(int keysize = 512);
-    void getKey(string &B, string &N);           // get public key
-    void getKey(ZZ &B, ZZ &N) { B = b, N = n; }; // get public key
-    string encrypt(string plaintext, string B, string N);
-    string decrypt(string ciphertext);
+    ZZ encrypt(ZZ plaintext);
+    ZZ decrypt(ZZ ciphertext);
     string sign(string message);
-    bool verify(string message, string signature, string B, string N);
+    bool verify(string message, string signature);
     void store(string filename);
+    int getsize() { return size; }
 };

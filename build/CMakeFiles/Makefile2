@@ -81,12 +81,12 @@ clean: CMakeFiles/EncryptSystem.dir/clean
 CMakeFiles/EncryptSystem.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target EncryptSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hzh/Documents/EncryptSystem/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target EncryptSystem"
 .PHONY : CMakeFiles/EncryptSystem.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/EncryptSystem.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hzh/Documents/EncryptSystem/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hzh/Documents/EncryptSystem/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/EncryptSystem.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hzh/Documents/EncryptSystem/build/CMakeFiles 0
 .PHONY : CMakeFiles/EncryptSystem.dir/rule

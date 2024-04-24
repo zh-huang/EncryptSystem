@@ -6,7 +6,6 @@
 #include "crypt.h"
 #include "keygen.h"
 #include "sign.h"
-#include "verify.h"
 
 using namespace std;
 
@@ -72,14 +71,17 @@ int sign(int argv, char** argc)
 
 int verify(int argv, char** argc)
 {
+    // Parse arguments
     string keyfile = "test/key.txt";
     string infile = "test/message.txt";
     string sigfile = "test/signature.txt";
-    RSA rsa;
     if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
     if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
     if (pargs(argv, argc, "-s") != "") sigfile = pargs(argv, argc, "-s");
-    rsa = RSA(keyfile);
+
+    // Read message and signature
+    RSA rsa;
+    rsa = RSA(keyfile, false);
     string message;
     ifstream i(infile, ios::binary);
     if (!i.is_open()) {
@@ -104,12 +106,12 @@ int verify(int argv, char** argc)
         signature += c;
     }
     s.close();
-    string B, N;
-    rsa.getKey(B, N);
-    if (rsa.verify(message, signature, B, N)) {
-        cout << "Signature is valid" << endl;
+
+    // Verify signature
+    if (rsa.verify(message, signature)) {
+        cout << "Signature is valid." << endl;
     } else {
-        cout << "Signature is invalid" << endl;
+        cout << "Signature is invalid." << endl;
     }
     return 0;
 }
@@ -117,6 +119,7 @@ int verify(int argv, char** argc)
 int encrypt(int argv, char** argc)
 {
     // Generate random key
+    cout << "Generating random key..." << endl;
     vector<unsigned char> key(16);
     for (auto& i : key) i = rand() % 256;
 
@@ -129,15 +132,21 @@ int encrypt(int argv, char** argc)
     if (pargs(argv, argc, "-o") != "") outfile = pargs(argv, argc, "-o");
 
     // Convert key to string
-    string keystr, encryptedkey;
-    for (auto i : key) keystr += i;
-    // Encrypt key
-    RSA rsa(keyfile);
-    string B, N;
-    rsa.getKey(B, N);
-    encryptedkey = rsa.encrypt(keystr, B, N);
+    cout << "Encrypting key..." << endl;
+    ZZ keyint, encryptedkey;
+    keyint = 0;
+    for (auto i : key) (keyint *= 256) += i;
+    RSA rsa(keyfile, false);
+    encryptedkey = rsa.encrypt(keyint);
+    int keylen = rsa.getsize() / 256;
+    vector<unsigned char> keystr(keylen * 64);
+    for (int i = 0; i < (int)keystr.size(); ++i) {
+        keystr[i] = encryptedkey % 256;
+        encryptedkey /= 256;
+    }
 
     // Encrypt file using key with AES
+    cout << "Encrypting file..." << endl;
     AES_CBC aes;
     string plaintext, ciphertext;
     ifstream i(infile, ios::binary);
@@ -157,7 +166,11 @@ int encrypt(int argv, char** argc)
         cerr << "Cannot open file: " << outfile << endl;
         return 1;
     }
-    o.write(encryptedkey.c_str(), 16);
+    // o.write((char*)(&keylen), sizeof(int));
+    o.write((char*)(&keystr[0]), keystr.size());
+    ZZ encryptedkeyint;
+    encryptedkeyint = 0;
+    for (auto i : keystr) (encryptedkeyint += i) *= 256;
     o.write(ciphertext.c_str(), ciphertext.size());
     o.close();
     return 0;
@@ -165,35 +178,47 @@ int encrypt(int argv, char** argc)
 
 int decrypt(int argv, char** argc)
 {
-    string encryptedkey = "1234567890123456", ciphertext;
-    vector<unsigned char> key(16);
+    string ciphertext;
 
     // Parse arguments
     string keyfile = "test/key.txt";
     string infile = "test/cipher.txt";
-    string outfile = "test/message.txt";
+    string outfile = "test/decryptedmessage.txt";
     if (pargs(argv, argc, "-k") != "") keyfile = pargs(argv, argc, "-k");
     if (pargs(argv, argc, "-i") != "") infile = pargs(argv, argc, "-i");
     if (pargs(argv, argc, "-o") != "") outfile = pargs(argv, argc, "-o");
 
-    // Decrypt key
+    // Read encrypted file
+    RSA rsa(keyfile, true);
+    int keylen = rsa.getsize() / 256;
+    vector<unsigned char> encryptedkey(keylen * 64);
+    vector<unsigned char> key(16);
     ifstream i(infile, ios::binary);
     if (!i.is_open()) {
         cerr << "Cannot open file: " << infile << endl;
         return 1;
     }
-    i.read(&encryptedkey[0], 16);
+    i.read((char*)(&encryptedkey[0]), encryptedkey.size());
+    char c;
+    i.read(&c, 1);
     while (!i.eof()) {
-        char c;
-        i.read(&c, 1);
         ciphertext += c;
+        i.read(&c, 1);
     }
     i.close();
-    RSA rsa(keyfile);
-    string keystr, B, N;
-    rsa.getKey(B, N);
-    keystr = rsa.decrypt(encryptedkey);
-    for (int i = 0; i < 16; i++) key[i] = keystr[i];
+
+    // Decrypt key using RSA
+    ZZ keyint, decryptedkey;
+    keyint = 0;
+    for (int i = (int)encryptedkey.size() - 1; i >= 0; --i) {
+        keyint *= 256;
+        keyint += encryptedkey[i];
+    }
+    decryptedkey = rsa.decrypt(keyint);
+    for (int i = 15; i >= 0; --i) {
+        key[i] = decryptedkey % 256;
+        decryptedkey /= 256;
+    }
 
     // Decrypt file using key with AES
     AES_CBC aes;

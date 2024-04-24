@@ -177,39 +177,3 @@ string AES_CBC::decryptString(const string &ciphertext,
     }
     return plaintext;
 }
-
-void AES_CBC::encryptFile(const string &inputFilename,
-                          const string &outputFilename,
-                          const vector<uint8_t> &key)
-{
-    ifstream inputFile(inputFilename, ios::binary);
-    if (!inputFile.is_open()) {
-        cerr << "aescbc.cpp AESCBC::encryptfile: infile error" << endl;
-        return;
-    }
-    istreambuf_iterator<char> beg(inputFile), end;
-    string message(beg, end);
-    inputFile.close();
-    string cipher = encryptString(message, key);
-    ofstream outputFile(outputFilename, ios::binary);
-    outputFile.write(cipher.c_str(), cipher.size());
-    outputFile.close();
-}
-
-void AES_CBC::decryptFile(const string &inputFilename,
-                          const string &outputFilename,
-                          const vector<uint8_t> &key)
-{
-    ifstream inputFile(inputFilename, ios::binary);
-    if (!inputFile.is_open()) {
-        cerr << "aescbc.cpp AESCBC::decryptfile: infile error" << endl;
-        return;
-    }
-    istreambuf_iterator<char> beg(inputFile), end;
-    string message(beg, end);
-    inputFile.close();
-    string plain = decryptString(message, key);
-    ofstream outputFile(outputFilename, ios::binary);
-    outputFile.write(plain.c_str(), plain.size());
-    outputFile.close();
-}

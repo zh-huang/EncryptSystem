@@ -15,15 +15,28 @@ NTL::ZZ ZZFromStr(const std::string &str)
     return number;
 }
 
-RSA::RSA(string name)
+RSA::RSA(string name, const bool privatekey)
 {
-    ifstream i = ifstream(name.c_str(), ios::in);
-    if (!i.is_open()) {
-        cerr << "RSA.cpp RSA::RSA(): input error" << endl;
+    if (privatekey) {
+        ifstream i = ifstream(name.c_str(), ios::in);
+        if (!i.is_open()) {
+            cerr << "Cannot open file: " << name << endl;
+            return;
+        }
+        i >> a >> b >> n >> size;
+        i.close();
         return;
     }
-    i >> a >> b >> n >> size;
-    i.close();
+    else {
+        ifstream i = ifstream(name + ".pub", ios::in);
+        if (!i.is_open()) {
+            cerr << "Cannot open file: " << name << ".pub" << endl;
+            return;
+        }
+        i >> b >> n >> size;
+        i.close();
+        return;
+    }
 }
 
 void RSA::keyGenreate(int key_size)
@@ -46,28 +59,18 @@ void RSA::keyGenreate(int key_size)
     InvMod(a, b, phi);
 }
 
-void RSA::getKey(string &B, string &N)
+ZZ RSA::encrypt(ZZ plaintext)
 {
-    B = toString(b);
-    N = toString(n);
-}
-
-string RSA::encrypt(string plaintext, string B, string N)
-{
-    ZZ pt = conv<ZZ>(plaintext.c_str());
-    ZZ eb = conv<ZZ>(B.c_str());
-    ZZ en = conv<ZZ>(N.c_str());
     ZZ ciphertext;
-    PowerMod(ciphertext, pt, eb, en);
-    return toString(ciphertext);
+    PowerMod(ciphertext, plaintext, b, n);
+    return ciphertext;
 }
 
-string RSA::decrypt(string ciphertext)
+ZZ RSA::decrypt(ZZ ciphertext)
 {
-    ZZ ct = conv<ZZ>(ciphertext.c_str());
     ZZ plaintext;
-    PowerMod(plaintext, ct, a, n);
-    return toString(plaintext);
+    PowerMod(plaintext, ciphertext, a, n);
+    return plaintext;
 }
 
 string RSA::sign(string message)
@@ -80,16 +83,13 @@ string RSA::sign(string message)
     return signature;
 }
 
-bool RSA::verify(string message, string signature, string B, string N)
+bool RSA::verify(string message, string signature)
 {
     ZZ m, s, hash;
     m = ZZFromStr(message);
     s = ZZFromStr(signature);
     hash = SHA_1().sha1zz(message);
-    ZZ b = ZZFromStr(B);
-    ZZ n = ZZFromStr(N);
     ZZ computedSignature = PowerMod(s, b, n);
-    cout << hash << endl << computedSignature << endl;
     return hash == computedSignature;
 }
 
@@ -104,8 +104,9 @@ void RSA::store(string filename)
     o.close();
 
     // store public key
-    ofstream p(filename + ".pub", ios::out | ios::binary);
-    p << b << endl;
-    p << n << endl;
-    p.close();
+    ofstream op(filename + ".pub", ios::out | ios::binary);
+    op << b << endl;
+    op << n << endl;
+    op << size << endl;
+    op.close();
 }

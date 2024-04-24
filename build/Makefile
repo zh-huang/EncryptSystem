@@ -314,30 +314,6 @@ sign.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/sign.cpp.s
 .PHONY : sign.cpp.s
 
-verify.o: verify.cpp.o
-.PHONY : verify.o
-
-# target to build an object file
-verify.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/verify.cpp.o
-.PHONY : verify.cpp.o
-
-verify.i: verify.cpp.i
-.PHONY : verify.i
-
-# target to preprocess a source file
-verify.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/verify.cpp.i
-.PHONY : verify.cpp.i
-
-verify.s: verify.cpp.s
-.PHONY : verify.s
-
-# target to generate assembly for a file
-verify.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/EncryptSystem.dir/build.make CMakeFiles/EncryptSystem.dir/verify.cpp.s
-.PHONY : verify.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -368,9 +344,6 @@ help:
 	@echo "... sign.o"
 	@echo "... sign.i"
 	@echo "... sign.s"
-	@echo "... verify.o"
-	@echo "... verify.i"
-	@echo "... verify.s"
 .PHONY : help
 
 

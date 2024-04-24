@@ -9,8 +9,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/EncryptSystem.dir/main.cpp.o.d"
   "CMakeFiles/EncryptSystem.dir/sign.cpp.o"
   "CMakeFiles/EncryptSystem.dir/sign.cpp.o.d"
-  "CMakeFiles/EncryptSystem.dir/verify.cpp.o"
-  "CMakeFiles/EncryptSystem.dir/verify.cpp.o.d"
   "EncryptSystem"
   "EncryptSystem.pdb"
 )

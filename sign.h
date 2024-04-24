@@ -17,6 +17,5 @@ class SHA_1
     void processChunk(vector<uint32_t> &h, const string &chunk);
 
 public:
-    string sha1(const string &input);
     ZZ sha1zz(const string &input);
 };

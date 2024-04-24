@@ -55,24 +55,6 @@ void SHA_1::processChunk(vector<uint32_t> &h, const string &chunk)
     h[4] += e;
 }
 
-string SHA_1::sha1(const string &input)
-{
-    string padded_input = input;
-    uint64_t orig_length = input.length() * 8;
-    padded_input += (char)0x80;
-    while (padded_input.length() % 64 != 56)
-        padded_input += (char)0x00;
-    for (int i = 7; i >= 0; --i)
-        padded_input += (char)((orig_length >> (i * 8)) & 0xff);
-    for (size_t i = 0; i < padded_input.length(); i += 64)
-        processChunk(h, padded_input.substr(i, 64));
-    string result;
-    for (size_t i = 0; i < h.size(); ++i)
-        for (int j = 7; j >= 0; --j)
-            result += toHex(((h[i] >> (j * 4)) & 0xf));
-    return result;
-}
-
 ZZ SHA_1::sha1zz(const string &input)
 {
     string padded_input = input;

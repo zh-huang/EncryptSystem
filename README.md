@@ -27,11 +27,19 @@ sudo make install
 
 ## Installation
 
+Install
+
 ```bash
-dpkg -i EncryptSystem.deb-xxx.deb
+sudo dpkg -i EncryptSystem-xxx.deb
 ```
 
-## Run
+Uninstall
+
+```bash
+sudo dpkg -r EncryptSystem
+```
+
+Run
 
 ```bash
 EncryptSystem

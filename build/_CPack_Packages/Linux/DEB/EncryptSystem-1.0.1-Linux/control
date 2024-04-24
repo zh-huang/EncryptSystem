@@ -4,6 +4,6 @@ Maintainer: Zehua Huang <huangzh84@outlook.com>
 Package: encryptsystem
 Priority: optional
 Section: devel
-Version: 1.0.0
-Installed-Size: 2381
+Version: 1.0.1
+Installed-Size: 2372
 
