@@ -3,5 +3,12 @@
         "iosfwd": "cpp",
         "iostream": "cpp",
         "ostream": "cpp"
-    }
+    },
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "latex",
+        "plaintext"
+    ]
 }

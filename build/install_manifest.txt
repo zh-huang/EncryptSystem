@@ -1,1 +1,1 @@
-/usr/local/bin/EncryptSystem
+E:/Lectures/24S-ISP/EncryptSystem/build/_CPack_Packages/win64/NSIS/EncryptSystem-1.0.3-win64/EncryptSystem/EncryptSystem.exe

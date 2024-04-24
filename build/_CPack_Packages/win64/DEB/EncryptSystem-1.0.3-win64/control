@@ -1,0 +1,9 @@
+Architecture: 
+Description: EncryptSystem built using CMake
+Maintainer: Zehua Huang <huangzh84@outlook.com>
+Package: encryptsystem
+Priority: optional
+Section: devel
+Version: 1.0.3
+Installed-Size: 2562
+

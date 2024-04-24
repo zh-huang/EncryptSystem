@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-a196550202db7b4e1c9d.json",
+					"jsonFile" : "directory-.-Debug-c22ecea6b0d98c5fac69.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.10"
@@ -40,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "EncryptSystem::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-EncryptSystem-Debug-786a39f9a057bcd7f6c3.json",
+					"jsonFile" : "target-EncryptSystem-Debug-385913172889386e9f2f.json",
 					"name" : "EncryptSystem",
 					"projectIndex" : 0
 				}
@@ -50,12 +50,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/hzh/Documents/EncryptSystem/build",
-		"source" : "/home/hzh/Documents/EncryptSystem"
+		"build" : "E:/Lectures/24S-ISP/EncryptSystem/build",
+		"source" : "E:/Lectures/24S-ISP/EncryptSystem"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 6
 	}
 }

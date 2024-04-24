@@ -27,17 +27,21 @@ sudo make install
 
 ## Installation
 
-Install
+Install (Ubuntu)
 
 ```bash
 sudo dpkg -i EncryptSystem-xxx.deb
 ```
 
-Uninstall
+Uninstall (Ubuntu)
 
 ```bash
 sudo dpkg -r EncryptSystem
 ```
+
+Install (Windows)
+
+Click EncryptSystem-1.0.3-win64.exe.
 
 Run
 

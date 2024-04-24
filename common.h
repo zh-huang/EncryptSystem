@@ -1,6 +1,7 @@
 #pragma once
 #include <sstream>
 #include <vector>
+#include <cstdint>
 
 using namespace std;
 

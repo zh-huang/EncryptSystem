@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "EncryptSystem"
+			"path" : "EncryptSystem.exe"
+		},
+		{
+			"path" : "EncryptSystem.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -12,7 +15,8 @@
 		[
 			"add_executable",
 			"install",
-			"target_link_libraries"
+			"target_link_libraries",
+			"include_directories"
 		],
 		"files" : 
 		[
@@ -26,19 +30,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 8,
+				"line" : 12,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 12,
+				"line" : 22,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 10,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 9,
 				"parent" : 0
 			}
 		]
@@ -49,10 +59,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -pthread -march=native -g"
-				},
+					"fragment" : " -pthread -march=native -g -std=gnu++14"
+				}
+			],
+			"includes" : 
+			[
 				{
-					"fragment" : "-std=gnu++14"
+					"backtrace" : 4,
+					"path" : "C:/msys64/usr/local/include"
 				}
 			],
 			"language" : "CXX",
@@ -81,12 +95,12 @@
 		[
 			{
 				"backtrace" : 2,
-				"path" : "/usr/local/bin"
+				"path" : "EncryptSystem"
 			}
 		],
 		"prefix" : 
 		{
-			"path" : "/usr/local"
+			"path" : "C:/Program Files (x86)/EncryptSystem"
 		}
 	},
 	"link" : 
@@ -103,7 +117,7 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "-lntl",
+				"fragment" : "C:\\msys64\\usr\\local\\lib\\libntl.a",
 				"role" : "libraries"
 			},
 			{
@@ -115,12 +129,16 @@
 				"backtrace" : 3,
 				"fragment" : "-lm",
 				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "EncryptSystem",
-	"nameOnDisk" : "EncryptSystem",
+	"nameOnDisk" : "EncryptSystem.exe",
 	"paths" : 
 	{
 		"build" : ".",
