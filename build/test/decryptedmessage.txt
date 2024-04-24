@@ -152,3 +152,4 @@ I don't want to end up simply having visited this world.
 PGP（英語：Pretty Good Privacy，直譯：优良保密协议）是一套用于讯息加密、验证的应用程式。 
 
 Pretty Good Privacy（プリティ・グッド・プライバシー）とは、フィル・ジマーマンが開発、公開した暗号ソフトウェアである。略称は PGP。 
+

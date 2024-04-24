@@ -1,9 +1,9 @@
 Architecture: amd64
 Description: EncryptSystem built using CMake
 Maintainer: Zehua Huang <huangzh84@outlook.com>
-Package: encryptsystem.deb
+Package: encryptsystem
 Priority: optional
 Section: devel
-Version: 0.1.2
-Installed-Size: 2373
+Version: 1.0.0
+Installed-Size: 2381
 
