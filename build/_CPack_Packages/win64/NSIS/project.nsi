@@ -3,9 +3,9 @@
 ;--------------------------------
 ; You must define these values
 
-  !define VERSION "1.0.3"
+  !define VERSION "1.0.4"
   !define PATCH  "1"
-  !define INST_DIR "E:/Lectures/24S-ISP/EncryptSystem/build/_CPack_Packages/win64/NSIS/EncryptSystem-1.0.3-win64"
+  !define INST_DIR "E:/Lectures/24S-ISP/EncryptSystem/build/_CPack_Packages/win64/NSIS/EncryptSystem-1.0.4-win64"
 
 ;--------------------------------
 ;Variables
@@ -25,14 +25,14 @@
   !include "MUI.nsh"
 
   ;Default installation folder
-  InstallDir "$PROGRAMFILES64\EncryptSystem 1.0.3"
+  InstallDir "$PROGRAMFILES64\EncryptSystem 1.0.4"
 
 ;--------------------------------
 ;General
 
   ;Name and file
-  Name "EncryptSystem 1.0.3"
-  OutFile "E:/Lectures/24S-ISP/EncryptSystem/build/_CPack_Packages/win64/NSIS/EncryptSystem-1.0.3-win64.exe"
+  Name "EncryptSystem 1.0.4"
+  OutFile "E:/Lectures/24S-ISP/EncryptSystem/build/_CPack_Packages/win64/NSIS/EncryptSystem-1.0.4-win64.exe"
 
   ;Set compression
   SetCompressor lzma
@@ -79,7 +79,7 @@ Var AR_RegFlags
 
   ClearErrors
   ;Reading component status from registry
-  ReadRegDWORD $AR_RegFlags HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3\Components\${SecName}" "Installed"
+  ReadRegDWORD $AR_RegFlags HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4\Components\${SecName}" "Installed"
   IfErrors "default_${SecName}"
     ;Status will stay default if registry value not found
     ;(component was never installed)
@@ -112,13 +112,13 @@ Var AR_RegFlags
     ;Section is not selected:
     ;Calling Section uninstall macro and writing zero installed flag
     !insertmacro "Remove_${${SecName}}"
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3\Components\${SecName}" \
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4\Components\${SecName}" \
   "Installed" 0
     Goto "exit_${SecName}"
 
  "leave_${SecName}:"
     ;Section is selected:
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3\Components\${SecName}" \
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4\Components\${SecName}" \
   "Installed" 1
 
  "exit_${SecName}:"
@@ -491,7 +491,7 @@ Function ConditionalAddToRegistry
   Pop $0
   Pop $1
   StrCmp "$0" "" ConditionalAddToRegistry_EmptyString
-    WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3" \
+    WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4" \
     "$1" "$0"
     ;MessageBox MB_OK "Set Registry: '$1' to '$0'"
     DetailPrint "Set install registry entry: '$1' to '$0'"
@@ -546,7 +546,7 @@ FunctionEnd
 
   ;Start Menu Folder Page Configuration
   !define MUI_STARTMENUPAGE_REGISTRY_ROOT "SHCTX"
-  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Humanity\EncryptSystem 1.0.3"
+  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Humanity\EncryptSystem 1.0.4"
   !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
   !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
 
@@ -660,15 +660,15 @@ Section "-Core installation"
   File /r "${INST_DIR}\*.*"
 
   ;Store installation folder
-  WriteRegStr SHCTX "Software\Humanity\EncryptSystem 1.0.3" "" $INSTDIR
+  WriteRegStr SHCTX "Software\Humanity\EncryptSystem 1.0.4" "" $INSTDIR
 
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
   Push "DisplayName"
-  Push "EncryptSystem 1.0.3"
+  Push "EncryptSystem 1.0.4"
   Call ConditionalAddToRegistry
   Push "DisplayVersion"
-  Push "1.0.3"
+  Push "1.0.4"
   Call ConditionalAddToRegistry
   Push "Publisher"
   Push "Humanity"
@@ -710,7 +710,7 @@ Section "-Core installation"
   ;Create shortcuts
   CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
 
-
+CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\EncryptSystem.lnk" "$INSTDIR\EncryptSystem.exe"
   CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
 
   ;Read a value from an InstallOptions INI file
@@ -743,7 +743,7 @@ SectionEnd
 
 Section "-Add to path"
   Push $INSTDIR\bin
-  StrCmp "" "ON" 0 doNotAddToPath
+  StrCmp "ON" "ON" 0 doNotAddToPath
   StrCmp $DO_NOT_ADD_TO_PATH "1" doNotAddToPath 0
     Call AddToPath
   doNotAddToPath:
@@ -752,7 +752,7 @@ SectionEnd
 ;--------------------------------
 ; Create custom pages
 Function InstallOptionsPage
-  !insertmacro MUI_HEADER_TEXT "Install Options" "Choose options for installing EncryptSystem 1.0.3"
+  !insertmacro MUI_HEADER_TEXT "Install Options" "Choose options for installing EncryptSystem 1.0.4"
   !insertmacro MUI_INSTALLOPTIONS_DISPLAY "NSIS.InstallOptions.ini"
 
 FunctionEnd
@@ -824,17 +824,17 @@ FunctionEnd
 
 Section "Uninstall"
   ReadRegStr $START_MENU SHCTX \
-   "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3" "StartMenu"
+   "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4" "StartMenu"
   ;MessageBox MB_OK "Start menu is in: $START_MENU"
   ReadRegStr $DO_NOT_ADD_TO_PATH SHCTX \
-    "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3" "DoNotAddToPath"
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4" "DoNotAddToPath"
   ReadRegStr $ADD_TO_PATH_ALL_USERS SHCTX \
-    "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3" "AddToPathAllUsers"
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4" "AddToPathAllUsers"
   ReadRegStr $ADD_TO_PATH_CURRENT_USER SHCTX \
-    "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3" "AddToPathCurrentUser"
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4" "AddToPathCurrentUser"
   ;MessageBox MB_OK "Add to path: $DO_NOT_ADD_TO_PATH all users: $ADD_TO_PATH_ALL_USERS"
   ReadRegStr $INSTALL_DESKTOP SHCTX \
-    "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3" "InstallToDesktop"
+    "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4" "InstallToDesktop"
   ;MessageBox MB_OK "Install to desktop: $INSTALL_DESKTOP "
 
 
@@ -854,13 +854,13 @@ Section "Uninstall"
 
   ;Remove the uninstaller itself.
   Delete "$INSTDIR\Uninstall.exe"
-  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3"
+  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4"
 
   ;Remove the installation directory if it is empty.
   RMDir "$INSTDIR"
 
   ; Remove the registry entries.
-  DeleteRegKey SHCTX "Software\Humanity\EncryptSystem 1.0.3"
+  DeleteRegKey SHCTX "Software\Humanity\EncryptSystem 1.0.4"
 
   ; Removes all optional components
   !insertmacro SectionList "RemoveSection_CPack"
@@ -903,7 +903,7 @@ Section "Uninstall"
     StrCmp "$MUI_TEMP" "$SMPROGRAMS" secondStartMenuDeleteLoopDone secondStartMenuDeleteLoop
   secondStartMenuDeleteLoopDone:
 
-  DeleteRegKey /ifempty SHCTX "Software\Humanity\EncryptSystem 1.0.3"
+  DeleteRegKey /ifempty SHCTX "Software\Humanity\EncryptSystem 1.0.4"
 
   Push $INSTDIR\bin
   StrCmp $DO_NOT_ADD_TO_PATH_ "1" doNotRemoveFromPath 0
@@ -924,11 +924,11 @@ SectionEnd
 Function .onInit
   StrCmp "" "ON" 0 inst
 
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.3" "UninstallString"
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\EncryptSystem 1.0.4" "UninstallString"
   StrCmp $0 "" inst
 
   MessageBox MB_YESNOCANCEL|MB_ICONEXCLAMATION \
-  "EncryptSystem 1.0.3 is already installed. $\n$\nDo you want to uninstall the old version before installing the new one?" \
+  "EncryptSystem 1.0.4 is already installed. $\n$\nDo you want to uninstall the old version before installing the new one?" \
   /SD IDYES IDYES uninst IDNO inst
   Abort
 
@@ -965,14 +965,14 @@ inst:
   ; install directory that is expected to be the
   ; default
   StrCpy $IS_DEFAULT_INSTALLDIR 0
-  StrCmp "$INSTDIR" "$PROGRAMFILES64\EncryptSystem 1.0.3" 0 +2
+  StrCmp "$INSTDIR" "$PROGRAMFILES64\EncryptSystem 1.0.4" 0 +2
     StrCpy $IS_DEFAULT_INSTALLDIR 1
 
   StrCpy $SV_ALLUSERS "JustMe"
   ; if default install dir then change the default
   ; if it is installed for JustMe
   StrCmp "$IS_DEFAULT_INSTALLDIR" "1" 0 +2
-    StrCpy $INSTDIR "$DOCUMENTS\EncryptSystem 1.0.3"
+    StrCpy $INSTDIR "$DOCUMENTS\EncryptSystem 1.0.4"
 
   ClearErrors
   UserInfo::GetName
@@ -998,9 +998,9 @@ inst:
   done:
   StrCmp $SV_ALLUSERS "AllUsers" 0 +3
     StrCmp "$IS_DEFAULT_INSTALLDIR" "1" 0 +2
-      StrCpy $INSTDIR "$PROGRAMFILES64\EncryptSystem 1.0.3"
+      StrCpy $INSTDIR "$PROGRAMFILES64\EncryptSystem 1.0.4"
 
-  StrCmp "" "ON" 0 noOptionsPage
+  StrCmp "ON" "ON" 0 noOptionsPage
     !insertmacro MUI_INSTALLOPTIONS_EXTRACT "NSIS.InstallOptions.ini"
 
   noOptionsPage:

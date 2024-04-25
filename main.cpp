@@ -95,7 +95,7 @@ int verify(int argv, char** argc)
     rsa = RSA(keyfile, false);
     string message;
     cout << "Reading message \'" << infile << "\'..." << endl;
-    ifstream i(infile, ios::binary);
+    ifstream i(infile);
     if (!i.is_open()) {
         cerr << "Cannot open file: " << infile << endl;
         return 1;
@@ -107,6 +107,8 @@ int verify(int argv, char** argc)
         i.read(&c, 1);
     }
     i.close();
+
+    // Read signature
     cout << "Reading signature \'" << sigfile << "\'..." << endl;
     string signature;
     ifstream s(sigfile);

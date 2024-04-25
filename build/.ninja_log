@@ -1,7 +1,7 @@
 # ninja log v5
-23	589	7356660916799659	CMakeFiles/EncryptSystem.dir/keygen.cpp.obj	e21f2be4bfb6e605
+4	542	7357376857102036	CMakeFiles/EncryptSystem.dir/keygen.cpp.obj	e21f2be4bfb6e605
 22	682	7356660356972444	CMakeFiles/EncryptSystem.dir/crypt.cpp.obj	be7bf5383eeb1647
-3	671	7356660917605793	CMakeFiles/EncryptSystem.dir/main.cpp.obj	963a131dee94a8ee
+4	630	7357375817349303	CMakeFiles/EncryptSystem.dir/main.cpp.obj	963a131dee94a8ee
 13	299	7356660913897280	CMakeFiles/EncryptSystem.dir/common.cpp.obj	457ddbd6487080d4
 33	471	7356660915591442	CMakeFiles/EncryptSystem.dir/sign.cpp.obj	dea5f60c543d0397
-4	166	7356662315322687	EncryptSystem.exe	37089f9a380d651a
+542	698	7357376858628097	EncryptSystem.exe	37089f9a380d651a

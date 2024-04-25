@@ -85,10 +85,10 @@ string RSA::sign(string message)
 
 bool RSA::verify(string message, string signature)
 {
-    ZZ m, s, hash;
-    m = ZZFromStr(message);
+    ZZ s, hash;
+    SHA_1 sha;
+    hash = sha.sha1zz(message);
     s = ZZFromStr(signature);
-    hash = SHA_1().sha1zz(message);
     ZZ computedSignature = PowerMod(s, b, n);
     return hash == computedSignature;
 }

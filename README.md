@@ -48,3 +48,9 @@ Run
 ```bash
 EncryptSystem
 ```
+
+## Reference
+
+[NSIS](https://nsis.sourceforge.io/Download)
+[MSYS2](https://www.msys2.org/)
+[NTL lib](https://libntl.org/)
