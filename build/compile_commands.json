@@ -1,32 +1,27 @@
 [
 {
-  "directory": "E:/Lectures/24S-ISP/EncryptSystem/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/msys64/usr/local/include  -pthread -march=native -g -std=gnu++14 -o CMakeFiles\\EncryptSystem.dir\\main.cpp.obj -c E:\\Lectures\\24S-ISP\\EncryptSystem\\main.cpp",
-  "file": "E:\\Lectures\\24S-ISP\\EncryptSystem\\main.cpp",
-  "output": "CMakeFiles\\EncryptSystem.dir\\main.cpp.obj"
+  "directory": "/home/hzh/Documents/EncryptSystem/build",
+  "command": "/usr/bin/g++    -pthread -march=native -g -std=gnu++14 -o CMakeFiles/EncryptSystem.dir/main.cpp.o -c /home/hzh/Documents/EncryptSystem/main.cpp",
+  "file": "/home/hzh/Documents/EncryptSystem/main.cpp"
 },
 {
-  "directory": "E:/Lectures/24S-ISP/EncryptSystem/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/msys64/usr/local/include  -pthread -march=native -g -std=gnu++14 -o CMakeFiles\\EncryptSystem.dir\\common.cpp.obj -c E:\\Lectures\\24S-ISP\\EncryptSystem\\common.cpp",
-  "file": "E:\\Lectures\\24S-ISP\\EncryptSystem\\common.cpp",
-  "output": "CMakeFiles\\EncryptSystem.dir\\common.cpp.obj"
+  "directory": "/home/hzh/Documents/EncryptSystem/build",
+  "command": "/usr/bin/g++    -pthread -march=native -g -std=gnu++14 -o CMakeFiles/EncryptSystem.dir/common.cpp.o -c /home/hzh/Documents/EncryptSystem/common.cpp",
+  "file": "/home/hzh/Documents/EncryptSystem/common.cpp"
 },
 {
-  "directory": "E:/Lectures/24S-ISP/EncryptSystem/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/msys64/usr/local/include  -pthread -march=native -g -std=gnu++14 -o CMakeFiles\\EncryptSystem.dir\\crypt.cpp.obj -c E:\\Lectures\\24S-ISP\\EncryptSystem\\crypt.cpp",
-  "file": "E:\\Lectures\\24S-ISP\\EncryptSystem\\crypt.cpp",
-  "output": "CMakeFiles\\EncryptSystem.dir\\crypt.cpp.obj"
+  "directory": "/home/hzh/Documents/EncryptSystem/build",
+  "command": "/usr/bin/g++    -pthread -march=native -g -std=gnu++14 -o CMakeFiles/EncryptSystem.dir/crypt.cpp.o -c /home/hzh/Documents/EncryptSystem/crypt.cpp",
+  "file": "/home/hzh/Documents/EncryptSystem/crypt.cpp"
 },
 {
-  "directory": "E:/Lectures/24S-ISP/EncryptSystem/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/msys64/usr/local/include  -pthread -march=native -g -std=gnu++14 -o CMakeFiles\\EncryptSystem.dir\\keygen.cpp.obj -c E:\\Lectures\\24S-ISP\\EncryptSystem\\keygen.cpp",
-  "file": "E:\\Lectures\\24S-ISP\\EncryptSystem\\keygen.cpp",
-  "output": "CMakeFiles\\EncryptSystem.dir\\keygen.cpp.obj"
+  "directory": "/home/hzh/Documents/EncryptSystem/build",
+  "command": "/usr/bin/g++    -pthread -march=native -g -std=gnu++14 -o CMakeFiles/EncryptSystem.dir/keygen.cpp.o -c /home/hzh/Documents/EncryptSystem/keygen.cpp",
+  "file": "/home/hzh/Documents/EncryptSystem/keygen.cpp"
 },
 {
-  "directory": "E:/Lectures/24S-ISP/EncryptSystem/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -IC:/msys64/usr/local/include  -pthread -march=native -g -std=gnu++14 -o CMakeFiles\\EncryptSystem.dir\\sign.cpp.obj -c E:\\Lectures\\24S-ISP\\EncryptSystem\\sign.cpp",
-  "file": "E:\\Lectures\\24S-ISP\\EncryptSystem\\sign.cpp",
-  "output": "CMakeFiles\\EncryptSystem.dir\\sign.cpp.obj"
+  "directory": "/home/hzh/Documents/EncryptSystem/build",
+  "command": "/usr/bin/g++    -pthread -march=native -g -std=gnu++14 -o CMakeFiles/EncryptSystem.dir/sign.cpp.o -c /home/hzh/Documents/EncryptSystem/sign.cpp",
+  "file": "/home/hzh/Documents/EncryptSystem/sign.cpp"
 }
 ]
